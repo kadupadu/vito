@@ -37,14 +37,16 @@ client.on("messageCreate", (message) => {
   }
 
   if (message.content.toLowerCase().startsWith(`vito say`)) {
+    let msg = message.content.split(" ").splice(2).join(" ");
     if (msg == "") {
       return message.reply(
         "```Cannot send message because the message provided is undefined.```",
       );
     }
-    let msg = message.content.split(" ").splice(2).join(" ");
+    try{
     message.delete();
     return message.channel.send(msg);
+    } catch (e) {console.log(e.message)}
   }
 });
 
