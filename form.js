@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 const staticPath = join(dirname(fileURLToPath(import.meta.url)), './');
 app.use(express.static(staticPath));
 app.get('/', (req, res) => res.sendFile(join(staticPath, 'index.htm')));
+app.get('/invite', (req, res) => res.redirect('https://discord.com/api/oauth2/authorize?client_id=1198738973938434089&permissions=412317240384&scope=bot'));
 app.post("/submit", (req, res) => {
   const { username, word } = req.body;
 
