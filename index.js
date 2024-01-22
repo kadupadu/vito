@@ -31,7 +31,7 @@ client.on("messageCreate", (message) => {
     message.mentions.users.first()?.id == client.user.id ||
     i === 25
   ) {
-    i = 0;
+    i = i===25 ? 0 : i;
     const msg = messages[Math.floor(Math.random() * messages.length)];
     return message.channel.send(msg);
   }
@@ -45,8 +45,9 @@ client.on("messageCreate", (message) => {
     }
     try{
     message.delete();
+     } catch (e) {console.log(e.message)}
     return message.channel.send(msg);
-    } catch (e) {console.log(e.message)}
+   
   }
 });
 
