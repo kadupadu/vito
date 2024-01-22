@@ -1,6 +1,5 @@
 import { Client, GatewayIntentBits, ActivityType, Partials } from "discord.js";
-import messages from "./messages.json" assert { type: "json" };;
-
+import messages from "./messages.json" assert { type: "json" };
 
 export const client = new Client({
   intents: [
@@ -22,7 +21,7 @@ client.on("ready", async () => {
 
 let i = 0;
 
-client.on("messageCreate", (message) => {
+client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
   if (message.content.includes("t")) i++;
 
@@ -31,7 +30,7 @@ client.on("messageCreate", (message) => {
     message.mentions.users.first()?.id == client.user.id ||
     i === 25
   ) {
-    i = i===25 ? 0 : i;
+    i = i === 25 ? 0 : i;
     const msg = messages[Math.floor(Math.random() * messages.length)];
     return message.channel.send(msg);
   }
@@ -43,13 +42,13 @@ client.on("messageCreate", (message) => {
         "```Cannot send message because the message provided is undefined.```",
       );
     }
-    try{
-    message.delete();
-     } catch (e) {console.log(e.message)}
+    try {
+      await message.delete();
+    } catch (e) {
+      console.log(e.message);
+    }
     return message.channel.send(msg);
-   
   }
 });
-
 
 client.login(process.env.TOKEN);
