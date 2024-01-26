@@ -89,10 +89,40 @@
         transform: rotate(360deg);
       }
     }
+
+   #logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#logo {
+  width: 100px;
+  height: auto;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.logo-title {
+  color: #fff;
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+
+.logo-note {
+  color: #56CCF2;
+  font-size: 0.8em;
+  margin-bottom: 10px;
+}
   </style>
 </head>
 <body>
+  <div id="logo-container">
   <img src="https://cdn.discordapp.com/avatars/1116145085088813176/78cb74df5773f797f0f180fee7c81b94.png" alt="Logo" id="logo">
+  <div class="logo-title">Vitwo</div>
+  <div class="logo-note">Managed by @sea.deep</div>
+</div>
 <a href="/invite">
   <button type="button">Invite Vito</button>
 </a>
