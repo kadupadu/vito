@@ -23,7 +23,7 @@ let i = 0;
 
 client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
-  if (message.content.includes("t")) i++;
+  if (message.content.toLowerCase().includes("t")) i++;
 
   if (
     message.content.toLowerCase().startsWith(`vito talk`) ||
