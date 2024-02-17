@@ -16,6 +16,7 @@ client.on("ready", async () => {
     name: "vito",
     type: ActivityType.Listening,
   });
+   await client.user.setAvatar("https://iili.io/JEVVc5Q.gif");
   import("./form.js");
 });
 
