@@ -28,10 +28,9 @@ client.on("messageCreate", async (message) => {
 
   if (
     message.content.toLowerCase().startsWith(`vito talk`) ||
-    message.mentions.users.first()?.id == client.user.id ||
-    i === 10
+    i === 20
   ) {
-    i = i === 10 ? 0 : i;
+    i = i === 20 ? 0 : i;
     const msg = messages[Math.floor(Math.random() * messages.length)];
     return message.channel.send(msg);
   }
