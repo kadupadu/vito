@@ -1,5 +1,6 @@
 import { Client, GatewayIntentBits, ActivityType, Partials } from "discord.js";
 import messages from "./messages.json" assert { type: "json" };
+import translate from "google-translate-api-x";
 
 export const client = new Client({
   intents: [
@@ -23,6 +24,24 @@ client.on("ready", async () => {
 let i = 0;
 
 client.on("messageCreate", async (message) => {
+  if (message.channel.id === "1140305947852550275") {
+  if (message.content !== "") {
+    const webhook = await message.channel.createWebhook({
+      name: message.member.displayName,
+      avatar: message.member.displayAvatarURL({
+        extension: "webp",
+        forceStatic: true,
+      }),
+      reason: "allu",
+    });
+
+    const res = await translate(message.content, { to: "te" });
+    await message.delete();
+    await webhook.send(res.text);
+    await webhook.delete();
+  }
+}
+
   if (message.author.bot) return;
   if (message.content.toLowerCase().includes("t")) i++;
 
