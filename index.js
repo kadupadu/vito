@@ -27,7 +27,7 @@ client.on("messageCreate", async (message) => {
   if (message.channel.id === "1140305947852550275") {
   if (message.content !== "") {
     const webhook = await message.channel.createWebhook({
-      name: message.member.displayName,
+      name: message.author.displayName,
       avatar: message.member.displayAvatarURL({
         extension: "webp",
         forceStatic: true,
