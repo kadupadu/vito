@@ -48,10 +48,11 @@ client.on("ready", async () => {
     if (message.author.bot || message.content.trim() === '') return;
 
     if (message.channel.id === '1128597323895808020') {
+     let sendChan = client.channels.cache.get("1215640270222266368");
         // Probability of 1/10 for bot to send a message
         if (Math.random() < 0.1) {
             const randomMessage = gen(await getMessagesFromDB());
-            return message.channel.send(randomMessage);
+            return sendChan.send(randomMessage);
         }
         
         try {
@@ -70,8 +71,31 @@ client.on("ready", async () => {
         } finally {
             await mongoClient.close();
         }
-    } else if (message.channel.id === '1215640270222266368') {
-        // Logic for the other specific channel
+    } 
+  if (message.content.toLowerCase().includes("t")) i++;
+    
+    if (
+      message.content.toLowerCase().startsWith(`vito talk`) ||
+      i === 20
+    ) {
+      i = i === 20 ? 0 : i;
+      const msg = messages[Math.floor(Math.random() * messages.length)];
+      return message.channel.send(msg);
+    }
+
+    if (message.content.toLowerCase().startsWith(`vito say`)) {
+      let msg = message.content.split(" ").splice(2).join(" ");
+      if (msg == "") {
+        return message.reply(
+          "```Cannot send message because the message provided is undefined.```",
+        );
+      }
+      try {
+        await message.delete();
+      } catch (e) {
+        console.log(e.message);
+      }
+      return message.channel.send(msg);
     }
   });
 });
