@@ -17,7 +17,7 @@ const mongoURI = 'mongodb+srv://pixdy:123Lmao@pixd.jpul8rs.mongodb.net/?retryWri
 const dbName = 'discordMessages';
 const collectionName = 'messages';
 
-const mongoClient = new MongoClient(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+const mongoClient = new MongoClient(mongoURI);
 
 client.on("ready", async () => {
   console.log(`Logged in as ${client.user.tag}!`);
