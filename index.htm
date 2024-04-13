@@ -186,6 +186,8 @@
         .then(response => {
           var confirmationMessage = `Thank you, ${username}! Your message has been received.`;
        document.getElementById('confirmation-message').textContent = confirmationMessage;
+        document.getElementById('word').value = "";
+        document.getElementById('username').value = "";
       }
   )}
     }
