@@ -1,7 +1,7 @@
 import { Client, GatewayIntentBits, ActivityType, Partials } from "discord.js";
 import messages from "./messages.json" assert { type: "json" };
 
-const client = new Client({
+export const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
