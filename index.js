@@ -19,7 +19,7 @@ client.on("ready", async () => {
   import("./form.js");
 
   let messageCounter = 0;
-
+client.user.setAvatar("https://iili.io/JvV8L2s.gif");
   client.on('messageCreate', async (message) => {
     if (message.author.bot || message.content.trim() === '') return;
 
