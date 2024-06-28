@@ -16,7 +16,7 @@ client.on("ready", async () => {
   import("./form.js");
   
   // Define client.uptime using Date.now()
-  client.uptime = Date.now();
+  const uptime = Date.now();
   
   let messageCounter = 0;
   
@@ -42,7 +42,7 @@ client.on("ready", async () => {
 
     if (message.content.toLowerCase().startsWith('vito ping')) {
       const msg = await message.channel.send("Pong!");
-      const uptime = formatUptime(Date.now() - client.uptime);
+      const uptime = formatUptime(Date.now() - uptime);
       msg.edit({
         content: "Pong!",
         embeds: [{
