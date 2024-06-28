@@ -41,9 +41,9 @@ client.on("ready", async () => {
     }
 
     if (message.content.toLowerCase().startsWith('vito ping')) {
-      const msg = await message.channel.send("Pong!");
+      const mseg = await message.channel.send("Pong!");
       const uptime = formatUptime(Date.now() - uptime);
-      msg.edit({
+      mseg.edit({
         content: "Pong!",
         embeds: [{
           color: client.color || 0x00FF00,
