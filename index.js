@@ -1,7 +1,17 @@
 import express from "express";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
-import { client } from "./index.js";
+
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+  ],
+  partials: [Partials.Channel],
+});
+
+client.login(process.env.TOKEN).catch(console.error);
 
 const app = express();
 const port = 3000;
