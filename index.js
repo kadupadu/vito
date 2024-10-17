@@ -1,6 +1,13 @@
 import express from "express";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
+import {
+  Client,
+  GatewayIntentBits,
+  ActivityType,
+  Partials,
+  AttachmentBuilder,
+} from "discord.js";
 
 const client = new Client({
   intents: [
