@@ -1,196 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vito Bot Word Submission</title>
-  <style>
-    body {
-     font-family: 'gg sans SemiBold Regular', sans-serif;
-      background: linear-gradient(to right, #7289DA, #5865F2);
-      margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .container {
-      background-color: #2C2F33;
-      padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
-      position: relative;
-      margin-top: 20px;
-      overflow: hidden;
-    }
-
-    h1 {
-      color: #fff;
-      margin-bottom: 20px;
-      font-size: 1.5em;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 10px;
-      font-weight: bold;
-      color: #fff;
-    }
-
-    input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      box-sizing: border-box;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-
-    button {
-      background: linear-gradient(to right, #56CCF2, #2F80ED);
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: linear-gradient(to right, #2F80ED, #56CCF2);
-    }
-
-    #confirmation-message {
-      color: #FFFFFD;
-      margin-top: 5px;
-      font-weight: bold;
-    }
-
-    #logo {
-      width: 100px;
-      height: auto;
-      margin-top: 20px;
-      animation: rotateLogo 5s linear infinite;
-      border-radius: 50%;
-      overflow: hidden;
-    }
-
-    @keyframes rotateLogo {
-      0% {
-        transform: rotate(0deg);
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vito Bot Word Submission</title>
+    <style>
+      body {
+        font-family: "gg sans SemiBold Regular", sans-serif;
+        background: linear-gradient(to right, #7289da, #5865f2);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 100vh;
+        overflow: hidden;
       }
-      100% {
-        transform: rotate(360deg);
+
+      .container {
+        background-color: #2c2f33;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        width: 90%;
+        max-width: 400px;
+        text-align: center;
+        position: relative;
+        margin-top: 20px;
+        overflow: hidden;
       }
-    }
 
-   #logo-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 10px;
-}
-
-#logo {
-  width: 100px;
-  height: auto;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.logo-title {
-  color: #fff;
-  margin-top: 10px;
-  font-size: 1.2em;
-}
-
-.logo-note {
-  color: #56CCF2;
-  font-size: 0.8em;
-  margin-bottom: 10px;
-}
-
-#logo-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 10px;
-  font-family: 'gg sans Bold', sans-serif; /* Apply gg sans Bold to the logo container */
-}
-
-.logo-title {
-  color: #fff;
-  margin-top: 10px;
-  font-size: 1.2em;
-  font-family: 'gg sans Medium Regular', sans-serif; /* Apply gg sans Medium Regular to the title */
-}
-
-.logo-note {
-  color: #56CCF2;
-  font-size: 0.8em;
-  margin-bottom: 10px;
-  font-family: 'gg sans Normal Regular', sans-serif; /* Apply gg sans Normal Regular to the note */
-}
-
-  </style>
-</head>
-<body>
-  <div id="logo-container">
-  <img src="https://iili.io/JvV8L2s.gif" alt="Logo" id="logo">
-  <div class="logo-title">Vitwo</div>
-  <div class="logo-note">Managed by @sea.deep</div>
-</div>
-<a href="/invite">
-  <button type="button">Invite Vito</button>
-</a>
-
-  <div class="container">
-    <h1>Vito Bot Word Federation</h1>
-
-    <form id="wordForm">
-      <label for="username">Your Discord Username:</label>
-      <input type="text" id="username" name="username" required>
-
-      <label for="word">Enter the message:</label>
-      <input type="text" id="word" name="word" required>
-
-      <button type="button" onclick="submitForm()">Submit</button>
-    </form>
-
-    <p id="confirmation-message"></p>
-  </div>
-
-  <script>
-    function submitForm() {
-      var username = document.getElementById('username').value;
-      var word = document.getElementById('word').value;
-
-      if (username === '' || word === '') {
-        var confirmationMessage = `Please fill in Both fields.`;
-               document.getElementById('confirmation-message').textContent = confirmationMessage;
-        
-      } else {
-        fetch('/submit', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ username, word }),
-        })
-        .then(response => {
-          var confirmationMessage = `Thank you, ${username}! Your message has been received.`;
-       document.getElementById('confirmation-message').textContent = confirmationMessage;
-        document.getElementById('word').value = "";
-        document.getElementById('username').value = "";
+      h1 {
+        color: #fff;
+        margin-bottom: 20px;
+        font-size: 1.5em;
       }
-  )}
-    }
-  </script>
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #fff;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      button {
+        background: linear-gradient(to right, #56ccf2, #2f80ed);
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: linear-gradient(to right, #2f80ed, #56ccf2);
+      }
+
+      #confirmation-message {
+        color: #fffffd;
+        margin-top: 5px;
+        font-weight: bold;
+      }
+
+      #logo {
+        width: 100px;
+        height: auto;
+        margin-top: 20px;
+        animation: rotateLogo 5s linear infinite;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      @keyframes rotateLogo {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      #logo-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+      }
+
+      #logo {
+        width: 100px;
+        height: auto;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .logo-title {
+        color: #fff;
+        margin-top: 10px;
+        font-size: 1.2em;
+      }
+
+      .logo-note {
+        color: #56ccf2;
+        font-size: 0.8em;
+        margin-bottom: 10px;
+      }
+
+      #logo-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+        font-family: "gg sans Bold", sans-serif; /* Apply gg sans Bold to the logo container */
+      }
+
+      .logo-title {
+        color: #fff;
+        margin-top: 10px;
+        font-size: 1.2em;
+        font-family: "gg sans Medium Regular", sans-serif; /* Apply gg sans Medium Regular to the title */
+      }
+
+      .logo-note {
+        color: #56ccf2;
+        font-size: 0.8em;
+        margin-bottom: 10px;
+        font-family: "gg sans Normal Regular", sans-serif; /* Apply gg sans Normal Regular to the note */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="logo-container">
+      <img src="https://iili.io/293xBz7.png" alt="Logo" id="logo" />
+      <div class="logo-title">Vitwo</div>
+      <div class="logo-note">Managed by @abovethe.sea</div>
+    </div>
+    <a href="/invite">
+      <button type="button">Invite Vito</button>
+    </a>
+
+    <div class="container">
+      <h1>Vito Bot Word Federation</h1>
+
+      <form id="wordForm">
+        <label for="username">Your Discord Username:</label>
+        <input type="text" id="username" name="username" required />
+
+        <label for="word">Enter the message:</label>
+        <input type="text" id="word" name="word" required />
+
+        <button type="button" onclick="submitForm()">Submit</button>
+      </form>
+
+      <p id="confirmation-message"></p>
+    </div>
+
+    <script>
+      function submitForm() {
+        var username = document.getElementById("username").value;
+        var word = document.getElementById("word").value;
+
+        if (username === "" || word === "") {
+          var confirmationMessage = `Please fill in Both fields.`;
+          document.getElementById("confirmation-message").textContent =
+            confirmationMessage;
+        } else {
+          fetch("/submit", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ username, word }),
+          }).then((response) => {
+            var confirmationMessage = `Thank you, ${username}! Your message has been submitted.`;
+            document.getElementById("confirmation-message").textContent =
+              confirmationMessage;
+            document.getElementById("word").value = "";
+            document.getElementById("username").value = "";
+          });
+        }
+      }
+    </script>
   </body>
-  </html>
+</html>
